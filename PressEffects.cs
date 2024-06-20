@@ -11,6 +11,8 @@ public class PressEffects : MonoBehaviour
     {
         if (Random.Range(0, _cube.SplitChancer) == 0)
             CreateNewCubes();
+        else
+            _blastEffect.Explode();
 
         Destroy(gameObject);
     }
@@ -22,15 +24,12 @@ public class PressEffects : MonoBehaviour
         int newSplitChancer = _cube.SplitChancer * splitChanceChangeValue;
         float resizingValue = 2f;
         Vector3 newSize = transform.localScale / resizingValue;
-        Cube[] cubes = new Cube[numberOfNewCubes];
 
         for (int i = 0; i < numberOfNewCubes; i++)
         {
-            cubes[i] = Instantiate(_cube, transform.position, Quaternion.identity);
+            Cube cube = Instantiate(_cube, transform.position, Quaternion.identity);
 
-            cubes[i].InitializeParameters(newSize, newSplitChancer);
+            cube.InitializeParameters(newSize, newSplitChancer);
         }
-
-        _blastEffect.Explode(cubes);
     }
 }
