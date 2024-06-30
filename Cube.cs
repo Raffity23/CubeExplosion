@@ -1,4 +1,6 @@
 using UnityEngine;
+[RequireComponent(typeof(MeshRenderer))]
+[RequireComponent(typeof(Rigidbody))]
 
 public class Cube : MonoBehaviour
 {
